@@ -43,20 +43,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $guard = 'api-admin';
-
-    /**
-     * Password mutator.
-     * @param $value
-     */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
-
-    public function projectOwner()
-    {
-        return $this->belongsTo(ProjectOwner::class, 'project_owner_id', 'id');
-    }
-  
+    protected $guard = 'api-user';
 }
