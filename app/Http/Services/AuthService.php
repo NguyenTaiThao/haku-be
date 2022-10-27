@@ -19,7 +19,7 @@ class AuthService extends BaseAuthService
                 'message' => trans('auth.failed')
             ], 401);
         }
-        $scopes = ['admin'];
+        $scopes = ['user'];
         $token = $user->createToken('Personal access tokens', $scopes)->plainTextToken;
         return response()->json([
             'access_token' => $token,

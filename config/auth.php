@@ -64,13 +64,9 @@ return [
     */
 
     'providers' => [
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Affiliator::class,
+            'model' => App\Models\User::class,
         ],
     ],
 
@@ -90,7 +86,7 @@ return [
     */
 
     'passwords' => [
-        'admins' => [
+        'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

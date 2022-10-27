@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,5 @@ Route::post('login', 'AuthController@Login');
 Route::middleware(['auth:api-user'])->group(function () {
     Route::get('me', 'AuthController@me');
     Route::post('logout', 'AuthController@logout');
+    Route::resource('sets', 'SetController');
 });
