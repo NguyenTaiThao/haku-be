@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Services;
 
 use App\Http\Services\BaseService;
@@ -7,6 +6,7 @@ use App\Models\Card;
 use App\Models\Set;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SetService extends BaseService
 {
