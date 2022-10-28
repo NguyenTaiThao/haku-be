@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Requests\auth\LoginRequest;
+use App\Http\Requests\auth\RegisterRequest;
 use App\Http\Services\BaseAuthService;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,6 +21,18 @@ class AuthService extends BaseAuthService
             ], 401);
         }
         $scopes = ['admin'];
+        $token = $user->createToken('Personal access tokens', $scopes)->plainTextToken;
+        return response()->json([
+            'access_token' => $token,
+            'user' => $user
+        ]);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
+        $user = User::create($credentials);
+        $scopes = ['user'];
         $token = $user->createToken('Personal access tokens', $scopes)->plainTextToken;
         return response()->json([
             'access_token' => $token,

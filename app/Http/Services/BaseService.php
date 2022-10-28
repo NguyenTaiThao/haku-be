@@ -221,13 +221,19 @@ abstract class BaseService
         if (isset($data['id'])) {
             unset($data['id']);
         }
+        $result = $this->_update($id, $data);
+        return $this->updateSuccessResponse($result, $message);
+    }
+
+    public function _update($id, $data)
+    {
         $item = $this->query->where('id', $id)->first();
         if (!$item) {
             return response()->json(null, 404);
         }
         $item->fill($data);
         $result = $item->update();
-        return $this->updateSuccessResponse($item, $message);
+        return $item;
     }
 
     /**
