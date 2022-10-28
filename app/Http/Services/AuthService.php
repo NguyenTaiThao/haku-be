@@ -39,16 +39,4 @@ class AuthService extends BaseAuthService
             'user' => $user
         ]);
     }
-
-    public function register(RegisterRequest $request)
-    {
-        $credentials = $request->only('email', 'password');
-        $user = User::create($credentials);
-        $scopes = ['user'];
-        $token = $user->createToken('Personal access tokens', $scopes)->plainTextToken;
-        return response()->json([
-            'access_token' => $token,
-            'user' => $user
-        ]);
-    }
 }

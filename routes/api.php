@@ -18,5 +18,6 @@ Route::post('register', 'AuthController@register');
 
 Route::middleware(['auth:api-user'])->group(function () {
     Route::get('me', 'AuthController@me');
+    Route::resource('sets', 'SetController');
     Route::post('logout', 'AuthController@logout');
 });
