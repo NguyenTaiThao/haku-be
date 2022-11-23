@@ -34,6 +34,12 @@ class Set extends Model
 
     public function getLearnedPercentAttribute()
     {
-        return 50;
+        $learnedCount = $this->cards()->where('is_remembered', true)->count();
+        $cardCount = $this->card_count;
+
+        if ($cardCount == 0) {
+            return 0;
+        }
+        return round($learnedCount / $cardCount * 100);
     }
 }

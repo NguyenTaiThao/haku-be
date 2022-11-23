@@ -19,6 +19,8 @@ class CreateSetUsersTable extends Migration
             $table->unsignedBigInteger('set_id');
             $table->timestamps();
 
+            $table->unique(['user_id', 'set_id']);
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('set_id')->references('id')->on('sets')->onDelete('cascade')->onUpdate('cascade');
         });

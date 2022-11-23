@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\auth\LoginRequest;
-use App\Http\Requests\auth\RegisterRequest;
-use App\Http\Services\AuthService;
 use App\Http\Services\SetService;
+use App\Models\Set;
 use Illuminate\Http\Request;
 
 class SetController extends Controller
@@ -41,5 +39,10 @@ class SetController extends Controller
     public function destroy(Request $request, $id)
     {
         return $this->service->destroy($request, $id);
+    }
+
+    public function quizGame(Request $request, Set $set)
+    {
+        return $this->service->quizGame($request, $set);
     }
 }

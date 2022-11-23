@@ -18,6 +18,7 @@ class CreateCardsTable extends Migration
             $table->unsignedBigInteger('set_id');
             $table->string('front_content');
             $table->string('back_content');
+            $table->boolean('is_remembered')->default(false);
             $table->timestamps();
 
             $table->foreign('set_id')->references('id')->on('sets')->onUpdate('cascade')->onDelete('cascade');

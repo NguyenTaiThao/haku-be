@@ -20,6 +20,8 @@ class CreateLearningStatusTable extends Migration
             $table->boolean('is_remembered')->default(false);
             $table->timestamps();
 
+            $table->unique(['user_id', 'card_id']);
+
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('card_id')->references('id')->on('cards')->onUpdate('cascade')->onDelete('cascade');
         });
