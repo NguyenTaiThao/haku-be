@@ -34,11 +34,11 @@ services:
       - mysql
 
   mysql:
-    container_name: asp-mysql
+    container_name: fc-mysql
     image: mysql:5.7
     platform: linux/x86_64
     volumes:
-      - asp-mysql-store:/var/lib/mysql
+      - fc-mysql-store:/var/lib/mysql
       # - ./docker/mysql/logs:/var/log/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
@@ -51,4 +51,4 @@ services:
       - '${FORWARD_DB_PORT:-3333}:3306'
 
 volumes:
-  asp-mysql-store:
+  fc-mysql-store:
